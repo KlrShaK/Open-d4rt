@@ -1,0 +1,28 @@
+[2026-07-12T01:05:18.792+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:05:18.792+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+Unable to determine the device handle for GPU0: 0000:1A:00.0: Unknown Error
+No devices were found
+[2026-07-12T01:05:48.656+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:05:48.666+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:05:48.666+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:05:48.666+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:06:18.656+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:06:18.663+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:06:18.663+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:06:18.663+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:06:48.656+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:06:48.662+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:06:48.662+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:06:48.663+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:07:18.656+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:07:18.663+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:07:18.663+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:07:18.663+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:07:48.656+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:07:48.663+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:07:48.663+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:07:48.663+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:08:14.243+02:00] error: *** JOB 6752465 ON eu-lo-g2-028 CANCELLED AT 2026-07-12T01:08:14 DUE to SIGNAL Terminated ***
+[2026-07-12T01:08:14.251+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:08:14.251+02:00] error: Failed to get device handle for GPU 0: Unknown Error
+[2026-07-12T01:08:14.251+02:00] error: Failed to get device handle for GPU 0: Unknown Error

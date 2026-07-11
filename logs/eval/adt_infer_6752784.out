@@ -1,0 +1,14 @@
+name, memory.total [MiB]
+NVIDIA GeForce RTX 2080 Ti, 11264 MiB
+[2026-07-12 01:12:01,759][INFO] Loaded checkpoint checkpoints/OpenD4RT_32CLIP_9Dataset_NoAUG/opend4rt.ckpt
+[2026-07-12 01:12:01,780][INFO] Missing keys: 0  Unexpected keys: 0
+[2026-07-12 01:12:07,218][INFO] Evaluating subset=adt_mini sequences=3
+/cluster/work/igp_psr/spanwar/envs/d4rt/lib/python3.10/site-packages/torch/nn/modules/conv.py:605: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv3d(
+[2026-07-12 01:13:43,956][INFO] subset=adt_mini seq=Apartment_release_clean_seq131_0 APD(global)=0.7596 EPE(global)=0.4596 queries=565 clip_frames=32
+[2026-07-12 01:14:31,485][INFO] subset=adt_mini seq=Apartment_release_clean_seq133_0 APD(global)=0.5337 EPE(global)=0.4175 queries=501 clip_frames=32
+[2026-07-12 01:15:18,523][INFO] subset=adt_mini seq=Apartment_release_clean_seq133_8 APD(global)=0.6728 EPE(global)=0.2646 queries=306 clip_frames=32
+[2026-07-12 01:15:18,571][INFO] adt_mini: APD(global)=0.6554 EPE(global)=0.3806 APD(global,dyn)=0.5786 EPE(global,dyn)=0.4682 queries=1372
+[2026-07-12 01:15:18,610][INFO] Saved summary to tmp/eval_adt_infer/summary.json
+WorldTrack D4RT Summary
+adt_mini: APD(global)=0.6554 EPE(global)=0.3806 APD(global,dyn)=0.5786 EPE(global,dyn)=0.4682 queries=1372
