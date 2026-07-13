@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 #SBATCH --job-name=d4rt-qwen-v1
-#SBATCH --partition=gpupr.4h
 #SBATCH --account=es_schin
 #SBATCH --gpus=a100:1
 #SBATCH --cpus-per-task=4
