@@ -38,3 +38,5 @@ fi
   --phase qwen \
   --model Qwen/Qwen3-VL-8B-Instruct \
   --output d4rt_agent/results/basketball_6/phase2_qwen.json
+
+"$D4RT_PYTHON" -m d4rt_agent.simple_v1 --phase aggregate
