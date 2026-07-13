@@ -4,6 +4,7 @@
 #SBATCH --gpus=a100:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=6G
+#SBATCH --tmp=2G
 #SBATCH --time=02:00:00
 #SBATCH --exclude=eu-lo-g2-028
 #SBATCH --output=logs/d4rt_agent/qwen_simple_%j.out
@@ -13,12 +14,15 @@ set -euo pipefail
 REPO_ROOT=/cluster/work/igp_psr/spanwar/Open-d4rt
 D4RT_PYTHON=/cluster/work/igp_psr/spanwar/envs/d4rt/bin/python
 DEPS_DIR="$REPO_ROOT/.cache/qwen3vl_python"
+LOCAL_DEPS="$TMPDIR/qwen3vl_python"
 HF_HOME=/cluster/work/igp_psr/spanwar/hf_cache
 
 cd "$REPO_ROOT"
 mkdir -p logs/d4rt_agent "$DEPS_DIR"
+mkdir -p "$LOCAL_DEPS"
+cp -a "$DEPS_DIR/." "$LOCAL_DEPS/"
 export HF_HOME
-export PYTHONPATH="$DEPS_DIR${PYTHONPATH:+:$PYTHONPATH}"
+export PYTHONPATH="$LOCAL_DEPS${PYTHONPATH:+:$PYTHONPATH}"
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 export HF_DATASETS_OFFLINE=1
