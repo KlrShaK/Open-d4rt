@@ -12,7 +12,6 @@ set -euo pipefail
 
 REPO_ROOT=/cluster/work/igp_psr/spanwar/Open-d4rt
 D4RT_PYTHON=/cluster/work/igp_psr/spanwar/envs/d4rt/bin/python
-UV=/cluster/home/spanwar/.local/bin/uv
 DEPS_DIR="$REPO_ROOT/.cache/qwen3vl_python"
 HF_HOME=/cluster/work/igp_psr/spanwar/hf_cache
 
@@ -20,18 +19,22 @@ cd "$REPO_ROOT"
 mkdir -p logs/d4rt_agent "$DEPS_DIR"
 export HF_HOME
 export PYTHONPATH="$DEPS_DIR${PYTHONPATH:+:$PYTHONPATH}"
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+export HF_DATASETS_OFFLINE=1
 
 nvidia-smi --query-gpu=name,memory.total,memory.free --format=csv
 
-if ! "$D4RT_PYTHON" -c 'import transformers, accelerate; assert tuple(map(int, transformers.__version__.split(".")[:2])) >= (4, 57)' 2>/dev/null; then
-  "$UV" pip install \
-    --python "$D4RT_PYTHON" \
-    --target "$DEPS_DIR" \
-    --upgrade \
-    'transformers>=4.57,<5' \
-    'accelerate>=1.1' \
-    sentencepiece
-fi
+"$D4RT_PYTHON" - <<'PY'
+import os
+from transformers import AutoConfig
+import accelerate, transformers
+
+assert tuple(map(int, transformers.__version__.split(".")[:2])) >= (4, 57)
+assert os.environ["HF_HUB_OFFLINE"] == "1"
+AutoConfig.from_pretrained("Qwen/Qwen3-VL-8B-Instruct", local_files_only=True)
+print(f"Offline preflight passed: transformers={transformers.__version__}, accelerate={accelerate.__version__}")
+PY
 
 "$D4RT_PYTHON" -m d4rt_agent.simple_v1 \
   --phase qwen \
