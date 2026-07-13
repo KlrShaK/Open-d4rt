@@ -17,6 +17,7 @@ DEPS_DIR="$REPO_ROOT/.cache/qwen3vl_python"
 LOCAL_DEPS="$TMPDIR/qwen3vl_python"
 HF_HOME=/cluster/work/igp_psr/spanwar/hf_cache
 MODEL_CACHE="$HF_HOME/hub/models--Qwen--Qwen3-VL-8B-Instruct/snapshots"
+PHASE="${PHASE:-qwen}"
 
 cd "$REPO_ROOT"
 mkdir -p logs/d4rt_agent "$DEPS_DIR"
@@ -48,9 +49,15 @@ AutoConfig.from_pretrained(os.environ["MODEL_DIR"], local_files_only=True)
 print(f"Offline preflight passed: transformers={transformers.__version__}, accelerate={accelerate.__version__}")
 PY
 
-"$D4RT_PYTHON" -m d4rt_agent.simple_v1 \
-  --phase qwen \
-  --model "$MODEL_DIR" \
-  --output d4rt_agent/results/basketball_6/phase2_qwen.json
-
-"$D4RT_PYTHON" -m d4rt_agent.simple_v1 --phase aggregate
+if [[ "$PHASE" == "direct" ]]; then
+  "$D4RT_PYTHON" -m d4rt_agent.simple_v1 \
+    --phase direct \
+    --model "$MODEL_DIR" \
+    --output d4rt_agent/results/basketball_6/phase5_direct_vlm.json
+else
+  "$D4RT_PYTHON" -m d4rt_agent.simple_v1 \
+    --phase qwen \
+    --model "$MODEL_DIR" \
+    --output d4rt_agent/results/basketball_6/phase2_qwen.json
+  "$D4RT_PYTHON" -m d4rt_agent.simple_v1 --phase aggregate
+fi
