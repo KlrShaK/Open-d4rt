@@ -2,7 +2,7 @@
 #SBATCH --job-name=d4rt-qwen-v1
 #SBATCH --partition=gpupr.4h
 #SBATCH --account=es_schin
-#SBATCH --gpus-per-node=1
+#SBATCH --gpus=a100_80gb:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=6G
 #SBATCH --time=02:00:00
@@ -13,6 +13,7 @@ set -euo pipefail
 
 REPO_ROOT=/cluster/work/igp_psr/spanwar/Open-d4rt
 D4RT_PYTHON=/cluster/work/igp_psr/spanwar/envs/d4rt/bin/python
+UV=/cluster/home/spanwar/.local/bin/uv
 DEPS_DIR="$REPO_ROOT/.cache/qwen3vl_python"
 HF_HOME=/cluster/work/igp_psr/spanwar/hf_cache
 
@@ -24,7 +25,8 @@ export PYTHONPATH="$DEPS_DIR${PYTHONPATH:+:$PYTHONPATH}"
 nvidia-smi --query-gpu=name,memory.total,memory.free --format=csv
 
 if ! "$D4RT_PYTHON" -c 'import transformers, accelerate; assert tuple(map(int, transformers.__version__.split(".")[:2])) >= (4, 57)' 2>/dev/null; then
-  "$D4RT_PYTHON" -m pip install \
+  "$UV" pip install \
+    --python "$D4RT_PYTHON" \
     --target "$DEPS_DIR" \
     --upgrade \
     'transformers>=4.57,<5' \
