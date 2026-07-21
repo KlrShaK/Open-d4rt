@@ -12,6 +12,21 @@ venv/
 /output_read/
 /tmp
 
+# Downloaded/local datasets and generated demo assets
+/datasets/
+/demo/
+
+# Local dependency cache and runtime output
+/.cache/
+/logs/
+
+# Editor state
+*.swp
+
+# Generated experiment artifacts
+/d4rt_agent/results/*/*.json
+/d4rt_agent/results/*/*.html
+
 # Model weights are distributed through Hugging Face, not this git repo.
 /checkpoints/**/*.ckpt
 /checkpoints/**/*.pth
