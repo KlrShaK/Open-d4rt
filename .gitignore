@@ -26,6 +26,7 @@ venv/
 # Generated experiment artifacts
 /d4rt_agent/results/*/*.json
 /d4rt_agent/results/*/*.html
+/d4rt_agent/results/dsi_bench/videos/
 
 # Model weights are distributed through Hugging Face, not this git repo.
 /checkpoints/**/*.ckpt
