@@ -90,7 +90,13 @@ if [[ "$DESIGN" != "census" ]]; then
 fi
 
 TOTAL="$("$D4RT_PYTHON" -c "import json,sys;print(len(json.load(open(sys.argv[1]))['questions']))" "$MANIFEST_PATH")"
-DONE_ALREADY="$(find "$RESULTS_DIR/answers" -maxdepth 1 -name '*.json' 2>/dev/null | wc -l)"
+# Spelled out rather than piped: `find` on a missing directory exits non-zero,
+# which under `set -euo pipefail` kills the job before it prints anything, and
+# the directory is legitimately missing on the very first submission.
+DONE_ALREADY=0
+if [[ -d "$RESULTS_DIR/answers" ]]; then
+  DONE_ALREADY="$(find "$RESULTS_DIR/answers" -maxdepth 1 -name '*.json' | wc -l)"
+fi
 
 echo "RESULTS_DIR=$RESULTS_DIR"
 echo "MANIFEST_PATH=$MANIFEST_PATH (design=$DESIGN, $TOTAL questions)"
