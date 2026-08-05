@@ -2,12 +2,15 @@
 # Full DSI-Bench census (all 1769 `std` questions) for the simple_v2 agent, on one
 # Blackwell (RTX PRO 6000) GPU. Derived from run_dsi_bench_blackwell.slurm.
 #
-# run_dsi_bench_blackwell.slurm now runs the census too, via --all-questions, and
-# routes it to the same `_full` directory. What this script still gives you is the
-# census-shaped allocation up front -- the 24 h partition, its own job name, and
-# its own log file -- rather than a 4 h default that has to be overridden on every
-# submit line. Prefer this one for the real census; prefer the flag when you want
-# a census and a sample launched the same way.
+# run_dsi_bench_blackwell.slurm now covers this entirely: executed rather than
+# submitted, its --all-questions takes the same `_full` directory, the same 24 h
+# partition, the same job name and the same log file. Nothing here is reachable
+# only through this file any more.
+#
+# It is kept because it is the file the recorded census runs were submitted with,
+# and because a plain `sbatch` of it needs no --all-questions to be remembered.
+# New work should prefer the flag, so that a census and a sample are launched the
+# same way and cannot drift apart.
 #
 # Build the manifest once, on the login node (CPU only, a couple of seconds):
 #
