@@ -38,3 +38,4 @@ venv/
 .cursorindexingignore
 **/VideoMAE2
 checkpoints/**
+d4rt_agent/results/*
